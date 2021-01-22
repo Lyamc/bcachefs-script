@@ -2,10 +2,10 @@
 Installs Ubuntu to a new disk using bcachefs as the root partition
 
 It assumes the following:
-1: You're in Ubuntu are connected to internet
-2: You have space for the kernel downloads and time for the compile
-3: You want to use an entire disk and boot using UEFI
-4: You want to use the defaults for format options
+1) You're in Ubuntu are connected to internet
+2) You have space for the kernel downloads and time for the compile
+3) You want to use an entire disk and boot using UEFI
+4) You want to use the defaults for format options
 
 ```
 wget https://raw.githubusercontent.com/Lyamc/bcachefs-script/main/bcachefs-script.sh; chmod +x bcachefs-script.sh; ./bcachefs-script.sh
