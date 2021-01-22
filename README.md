@@ -16,4 +16,6 @@ How to Use:
 2) Reboot
 3) Run it again, choose "2", pray some more
 4) Reboot into the newly installed OS.
+
+
 Feel free to give me feedback, I don't know what I'm doing, I just keep doing things till they work. In the future I'll probably add a prompt for adding the formatting options.
