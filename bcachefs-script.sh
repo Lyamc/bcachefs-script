@@ -274,6 +274,7 @@ sudo debootstrap --arch amd64 $distro $mounttarget
 echo “Copying the bcachefs-tools and kernel .deb files to the new system“
 sudo cp -f ~/build/bcachefs-tools*.deb -t $mounttarget/tmp/
 sudo cp -f ~/build/linux*.deb -t $mounttarget/tmp/
+sudo cp -f /etc/apt/sources.list -t $mounttarget/etc/apt/sources.list
 
 }
 
