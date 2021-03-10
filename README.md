@@ -19,3 +19,12 @@ How to Use:
 
 
 Feel free to give me feedback, I don't know what I'm doing, I just keep doing things till they work. In the future I'll probably add a prompt for adding the formatting options.
+
+# bcachefs-update
+Installs dependencies, builds and installs bcachefs-tools + kernel from latest git.
+
+Note: This script assumes that you're running Ubuntu
+
+```
+wget https://raw.githubusercontent.com/Lyamc/bcachefs-script/main/bcachefs-update.sh; chmod +x bcachefs-update.sh; ./bcachefs-update.sh
+```
