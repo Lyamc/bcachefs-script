@@ -11,7 +11,7 @@ echo "Getting new repository information"
 sudo apt update
 
 echo "Getting bcachefs dependencies"
-sudo apt install -y debootstrap tasksel devscripts gcc git libaio-dev libattr1-dev libblkid-dev libkeyutils-dev liblz4-dev libscrypt-dev libsodium-dev liburcu-dev libzstd-dev make pkg-config uuid-dev zlib1g-dev valgrind python3-pytest
+sudo apt install -y debootstrap tasksel devscripts gcc git libaio-dev libattr1-dev libblkid-dev libkeyutils-dev liblz4-dev libscrypt-dev libsodium-dev liburcu-dev libzstd-dev make pkg-config uuid-dev zlib1g-dev valgrind python3-pytest binutils-dev
 
 echo "Getting Linux Kernel Build Dependencies"
 sudo apt build-dep -y linux
@@ -69,7 +69,6 @@ scripts/config --disable CONFIG_BCACHEFS_TESTS
 echo "Building Linux Kernel"
 
 make bindeb-pkg -j $(nproc) EXTRAVERSION=-$(git rev-parse --short HEAD) LOCALVERSION=
-wget https://github.com/nathanchance/bug-files/raw/7442f4c76efc096b02cb750b8c553de93fdcf409/cbl-1254/thunk_64.o -o arch/x86/entry/thunk_64.o
 cd ..
 
 echo "Installing Linux Kernel"
