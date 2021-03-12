@@ -31,8 +31,7 @@ function update-dep
 echo "Adding additional repositories"
 sudo apt-add-repository -syn multiverse
 sudo apt-add-repository -syn universe
-sudo apt-add-repository -syn restricted
-sudo apt-add-repository -syn main
+#sudo apt-add-repository -syn restricted
 grep '# deb-src.*main' /etc/apt/sources.list | sed 's|# deb-src|deb-src|g' | sudo tee /etc/apt/sources.list.d/deb-src.list
 echo "Getting new repository information"
 sudo apt update
@@ -82,7 +81,7 @@ git clone https://evilpiepirate.org/git/bcachefs.git
 echo "Setting Kernel Configuration"
 
 cd ./bcachefs
-
+wget https://github.com/nathanchance/bug-files/raw/7442f4c76efc096b02cb750b8c553de93fdcf409/cbl-1254/thunk_64.o -o arch/x86/entry/thunk_64.o
 make olddefconfig
 
 ## CONFIG_DEBUG_INFO controls whether or not make will spit out linux-image-blahblah-dbg.deb
