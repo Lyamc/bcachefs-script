@@ -92,7 +92,7 @@ scripts/config --disable CONFIG_BCACHEFS_DEBUG
 scripts/config --disable CONFIG_BCACHEFS_TESTS
 
 echo "Building Linux Kernel"
-
+make -j $(nproc)
 make bindeb-pkg -j $(nproc) EXTRAVERSION=-$(git rev-parse --short HEAD) LOCALVERSION=
 
 cd ..
