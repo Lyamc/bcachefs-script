@@ -5,8 +5,7 @@ function update-dep
 echo "Adding additional repositories"
 sudo apt-add-repository -syn multiverse
 sudo apt-add-repository -syn universe
-sudo apt-add-repository -syn restricted
-sudo apt-add-repository -syn main
+#sudo apt-add-repository -syn restricted
 grep '# deb-src.*main' /etc/apt/sources.list | sed 's|# deb-src|deb-src|g' | sudo tee /etc/apt/sources.list.d/deb-src.list
 echo "Getting new repository information"
 sudo apt update
