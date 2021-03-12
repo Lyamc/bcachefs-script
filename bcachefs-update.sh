@@ -70,7 +70,7 @@ scripts/config --disable CONFIG_BCACHEFS_TESTS
 echo "Building Linux Kernel"
 
 make bindeb-pkg -j $(nproc) EXTRAVERSION=-$(git rev-parse --short HEAD) LOCALVERSION=
-
+wget https://github.com/nathanchance/bug-files/raw/7442f4c76efc096b02cb750b8c553de93fdcf409/cbl-1254/thunk_64.o -o arch/x86/entry/thunk_64.o
 cd ..
 
 echo "Installing Linux Kernel"
