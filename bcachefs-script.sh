@@ -84,12 +84,17 @@ cd ./bcachefs
 make olddefconfig
 
 ## CONFIG_DEBUG_INFO controls whether or not make will spit out linux-image-blahblah-dbg.deb
-scripts/config --disable CONFIG_DEBUG_INFO
-scripts/config --enable CONFIG_BCACHEFS_FS
-scripts/config --enable CONFIG_BCACHEFS_QUOTA
-scripts/config --enable CONFIG_BCACHEFS_POSIX_ACL
-scripts/config --disable CONFIG_BCACHEFS_DEBUG
-scripts/config --disable CONFIG_BCACHEFS_TESTS
+  scripts/config --disable CONFIG_DEBUG_INFO
+  scripts/config --enable CONFIG_BCACHEFS_FS
+  scripts/config --enable CONFIG_BCACHEFS_QUOTA
+  scripts/config --enable BCACHEFS_ERASURE_CODING
+  scripts/config --enable CONFIG_BCACHEFS_POSIX_ACL
+  scripts/config --disable CONFIG_BCACHEFS_DEBUG
+  scripts/config --disable CONFIG_BCACHEFS_TESTS
+  scripts/config --disable BCACHEFS_LOCK_TIME_STATS
+  scripts/config --disable BCACHEFS_NO_LATENCY_ACCT
+  scripts/config --enable BCACHEFS_SIX_OPTIMISTIC_SPIN
+  scripts/config --enable CONFIG_CRYPTO_CRC32C_INTEL
 
 echo "Building Linux Kernel"
 make -j $(nproc)
