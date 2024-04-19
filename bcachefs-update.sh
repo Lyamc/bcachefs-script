@@ -69,6 +69,7 @@ scripts/config --disable CONFIG_BCACHEFS_TESTS
 scripts/config --disable BCACHEFS_LOCK_TIME_STATS
 scripts/config --disable BCACHEFS_NO_LATENCY_ACCT
 scripts/config --enable BCACHEFS_SIX_OPTIMISTIC_SPIN
+scripts/config --enable CONFIG_CRYPTO_CRC32C_INTEL
 
 echo "Building Linux Kernel"
 
