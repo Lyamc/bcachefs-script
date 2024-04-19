@@ -62,9 +62,11 @@ make olddefconfig
 scripts/config --disable CONFIG_DEBUG_INFO
 scripts/config --enable CONFIG_BCACHEFS_FS
 scripts/config --enable CONFIG_BCACHEFS_QUOTA
+scripts/config --enable BCACHEFS_ERASURE_CODING
 scripts/config --enable CONFIG_BCACHEFS_POSIX_ACL
 scripts/config --disable CONFIG_BCACHEFS_DEBUG
 scripts/config --disable CONFIG_BCACHEFS_TESTS
+scripts/config --disable BCACHEFS_LOCK_TIME_STATS
 
 echo "Building Linux Kernel"
 
