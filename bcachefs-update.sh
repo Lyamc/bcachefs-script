@@ -11,7 +11,7 @@ echo "Getting new repository information"
 sudo apt update
 
 echo "Getting bcachefs dependencies"
-sudo apt install -y debootstrap tasksel devscripts gcc git libaio-dev libattr1-dev libblkid-dev libkeyutils-dev liblz4-dev libscrypt-dev libsodium-dev liburcu-dev libzstd-dev make pkg-config uuid-dev zlib1g-dev valgrind python3-pytest binutils-dev libfuse3-dev libsystemd-dev
+sudo apt install -y cargo debootstrap tasksel devscripts gcc git libaio-dev libattr1-dev libblkid-dev libkeyutils-dev liblz4-dev libscrypt-dev libsodium-dev liburcu-dev libzstd-dev make pkg-config uuid-dev zlib1g-dev valgrind python3-pytest binutils-dev libfuse3-dev libsystemd-dev systemd-dev
 
 echo "Getting Linux Kernel Build Dependencies"
 sudo apt build-dep -y linux
@@ -69,6 +69,7 @@ scripts/config --disable CONFIG_BCACHEFS_TESTS
 scripts/config --disable BCACHEFS_LOCK_TIME_STATS
 scripts/config --disable BCACHEFS_NO_LATENCY_ACCT
 scripts/config --enable BCACHEFS_SIX_OPTIMISTIC_SPIN
+scripts/config --enable BCACHEFS_PATH_TRACEPOINTS
 scripts/config --enable CONFIG_CRYPTO_CRC32C_INTEL
 
 echo "Building Linux Kernel"
