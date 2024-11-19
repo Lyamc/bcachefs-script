@@ -11,7 +11,7 @@ echo "Getting new repository information"
 sudo apt update
 
 echo "Getting bcachefs dependencies"
-sudo apt install -y debootstrap tasksel devscripts gcc git libaio-dev libattr1-dev libblkid-dev libkeyutils-dev liblz4-dev libscrypt-dev libsodium-dev liburcu-dev libzstd-dev make pkg-config uuid-dev zlib1g-dev valgrind python3-pytest binutils-dev
+sudo apt install -y debootstrap tasksel devscripts gcc git libaio-dev libattr1-dev libblkid-dev libkeyutils-dev liblz4-dev libscrypt-dev libsodium-dev liburcu-dev libzstd-dev make pkg-config uuid-dev zlib1g-dev valgrind python3-pytest binutils-dev libfuse3-dev libsystemd-dev
 
 echo "Getting Linux Kernel Build Dependencies"
 sudo apt build-dep -y linux
