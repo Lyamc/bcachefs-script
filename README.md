@@ -28,3 +28,71 @@ Note: This script assumes that you're running Ubuntu
 ```
 wget https://raw.githubusercontent.com/Lyamc/bcachefs-script/main/bcachefs-update.sh; chmod +x bcachefs-update.sh; ./bcachefs-update.sh
 ```
+
+# Install on Alpine
+
+Assuming you've already set up networking, the user, and sudo...
+
+```
+# Linux Kernel build dependencies
+sudo apk add alpine-sdk linux-headers bash flex bison bc kmod cpio elfutils-dev ncurses-dev openssl-dev perl
+
+# Bcachefs Tools build dependencies
+sudo apk add build-base cargo clang17-dev coreutils libaio-dev libsodium-dev llvm17-dev eudev-dev util-linux-dev keyutils-dev lz4-dev userspace-rcu-dev zstd-dev pkgconf zlib
+```
+
+```
+# Build and Install Kernel
+git clone https://github.com/koverstreet/bcachefs
+cd bcachefs
+
+make olddefconfig
+
+scripts/config --disable CONFIG_DEBUG_INFO
+scripts/config --enable CONFIG_BCACHEFS_FS
+scripts/config --enable CONFIG_BCACHEFS_QUOTA
+scripts/config --enable BCACHEFS_ERASURE_CODING
+scripts/config --enable CONFIG_BCACHEFS_POSIX_ACL
+scripts/config --disable CONFIG_BCACHEFS_DEBUG
+scripts/config --disable CONFIG_BCACHEFS_TESTS
+scripts/config --disable BCACHEFS_LOCK_TIME_STATS
+scripts/config --disable BCACHEFS_NO_LATENCY_ACCT
+scripts/config --enable BCACHEFS_SIX_OPTIMISTIC_SPIN
+scripts/config --enable BCACHEFS_PATH_TRACEPOINTS
+scripts/config --enable CONFIG_CRYPTO_CRC32C_INTEL
+# Enable ext4 filesystem support
+scripts/config --enable EXT3_FS
+scripts/config --enable CONFIG_EXT4_FS
+
+# Enable btrfs filesystem support
+scripts/config --enable CONFIG_BTRFS_FS
+
+# Enable xfs filesystem support
+scripts/config --enable CONFIG_XFS_FS
+
+make olddefconfig
+
+make
+make modules
+sudo make install
+
+sudo cp -v arch/x86/boot/bzImage /boot/vmlinuz-bcachefs
+sudo cp -v System.map /boot/System.map-bcachefs
+sudo cp -v .config /boot/config-bcachefs
+
+sudo make modules_install
+
+kernelversion=$(make kernelversion)
+cd ../
+sudo mkinitfs -C lz4 -o /boot/initramfs-bcachefs $kernelversion
+sudo update-extlinux
+# Confirm with cat /boot/extlinux.conf
+```
+
+```
+# Build and Install Tools
+git clone https://github.com/koverstreet/bcachefs-tools
+cd bcachefs-tools
+make
+sudo make install
+```
