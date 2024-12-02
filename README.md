@@ -80,9 +80,7 @@ sudo cp -v arch/x86/boot/bzImage /boot/vmlinuz-bcachefs
 sudo cp -v System.map /boot/System.map-bcachefs
 sudo cp -v .config /boot/config-bcachefs
 
-sudo make modules_install
-
-kernelversion=$(make kernelversion)
+$kernelversion=$(sudo make modules_install | awk '/SYMLINK/ {print $2}' | awk -F'/' '{print $4}')
 cd ../
 sudo mkinitfs -C lz4 -o /boot/initramfs-bcachefs $kernelversion
 sudo update-extlinux
