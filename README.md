@@ -1,3 +1,8 @@
+# This script is no longer necessary
+## Bcachefs support is now in most Linux distros and bcachefs-tools is also included in their repos. Unless you have a reason to use https://github.com/koverstreet/bcachefs it'll be easier just to use those.
+## This script can be easily modified to use the binary packages to save a ton of time and storage
+
+
 # bcachefs-script
 Installs Ubuntu to a new disk using bcachefs as the root partition
 
